@@ -1,8 +1,11 @@
 import Photo from "./Photo";
+import { useEffect } from "react";
 
 const PhotoList = (props) => {
-    // const results = props
-    // let gifs = results.map(gif => <Gif url={gif.images.fixed_height.url} key={gif.id} />)
+  
+    useEffect(() => {
+      props.updateQuery(props.category);
+    }, [props.category, props.updateQuery])
 
     return (
       <div className="photo-container">

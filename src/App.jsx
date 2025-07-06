@@ -14,9 +14,10 @@ import apiKey from './config'
 function App() {
   const [count, setCount] = useState(0)
   const [images, setImages] = useState([]);
+  const [query, setQuery] = useState('cats');
 
-  const fetchData = () => {
-    fetch('https://pixabay.com/api/?key=51152439-e0206553f27915b200ffedba7')
+  const fetchData = (searchQuery) => {
+    fetch(`https://pixabay.com/api/?key=51152439-e0206553f27915b200ffedba7&q=${searchQuery}&image_type=photo`)
     .then(response => response.json())
     .then(data => {
       setImages(data.hits);
@@ -25,20 +26,20 @@ function App() {
   }
 
   useEffect(() => {
-    fetchData();
-  }, [])
+    fetchData(query);
+  }, [query])
 
   return (
     <>
       <div className='container'>
-        <Search />
+        <Search updateQuery={setQuery} />
         <Nav />
         <Routes>
           <Route path='/' element={<Navigate replace to='/cats' />} />
-          <Route path='/cats' element={<PhotoList data={images} />} />
-          <Route path='/dogs' element={<PhotoList />} />
-          <Route path='/computers' element={<PhotoList />} />
-          <Route path='/search/:query' element={<PhotoList />} />
+          <Route path='/cats' element={<PhotoList data={images} updateQuery={setQuery} category={'cats'} />} />
+          <Route path='/dogs' element={<PhotoList data={images} updateQuery={setQuery} category={'dogs'} />} />
+          <Route path='/computers' element={<PhotoList data={images} updateQuery={setQuery} category={'computers'}/>} />
+          <Route path='/search/:query' element={<PhotoList data={images} updateQuery={setQuery} />} />
         </Routes>
       </div>
     </>
