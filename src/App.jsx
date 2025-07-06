@@ -16,8 +16,8 @@ function App() {
   const [images, setImages] = useState([]);
   const [query, setQuery] = useState('cats');
 
-  const fetchData = (searchQuery) => {
-    fetch(`https://pixabay.com/api/?key=51152439-e0206553f27915b200ffedba7&q=${searchQuery}&image_type=photo`)
+  const fetchData = (key, searchQuery) => {
+    fetch(`https://pixabay.com/api/?key=${key}&q=${searchQuery}&image_type=photo`)
     .then(response => response.json())
     .then(data => {
       setImages(data.hits);
@@ -26,7 +26,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetchData(query);
+    fetchData(apiKey, query);
   }, [query])
 
   return (
