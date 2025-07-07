@@ -13,9 +13,9 @@ import NotFound from './components/NotFound.jsx'
 import apiKey from './config'
 
 function App() {
-  const [images, setImages] = useState([]);
-  const [query, setQuery] = useState('');
-  const [fetching, setFetching] = useState(false)
+  const [images, setImages] = useState([]); // manages array of images 
+  const [query, setQuery] = useState(''); // manages current search query 
+  const [fetching, setFetching] = useState(false) // manages time between loading new images 
 
   const fetchData = (key, searchQuery) => {
     setFetching(true);
@@ -24,6 +24,7 @@ function App() {
     .then(data => {
       setImages(data.hits);
     })
+    .catch(error => console.error('Error fetching images:', error.message))
     .finally(() => setFetching(false))
   }
 
