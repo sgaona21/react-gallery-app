@@ -6,7 +6,12 @@ const Search = (props) => {
   let navigate = useNavigate();
 
   const updateSearchBar = () => {
-    query.current.value = props.currentQuery
+    if (props.currentQuery == 'cats' || props.currentQuery == 'dogs' || props.currentQuery == 'computers') {
+      query.current.value = '';
+    } else {
+      query.current.value = props.currentQuery
+    }
+    
   }
 
   const handleSubmit = (e) => {

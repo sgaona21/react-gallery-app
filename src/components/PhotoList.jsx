@@ -1,6 +1,7 @@
 import Photo from "./Photo";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import loadingImage from '../assets/loading.png'
 
 const PhotoList = (props) => {
     const { query } = useParams()
@@ -15,6 +16,14 @@ const PhotoList = (props) => {
       props.updateQuery(props.category);
       handleSearchNav(query)
     }, [props.category, props.updateQuery, query])
+
+    if (props.isFetching) {
+      return (
+        <div>
+          <img className="loading" src={loadingImage}/>
+        </div>
+      );
+    }
 
     return (
       <div className="photo-container">
