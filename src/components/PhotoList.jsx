@@ -1,8 +1,9 @@
 import Photo from "./Photo";
 import { useEffect } from "react";
+import { useParams, useLocation } from "react-router-dom";
 
 const PhotoList = (props) => {
-  
+
     useEffect(() => {
       props.updateQuery(props.category);
     }, [props.category, props.updateQuery])
