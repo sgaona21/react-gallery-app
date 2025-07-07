@@ -1,12 +1,20 @@
 import Photo from "./Photo";
 import { useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const PhotoList = (props) => {
+    const { query } = useParams()
+
+    const handleSearchNav = (newQuery) => {
+      if (newQuery) {
+        props.updateQuery(newQuery)
+      }
+    }
 
     useEffect(() => {
       props.updateQuery(props.category);
-    }, [props.category, props.updateQuery])
+      handleSearchNav(query)
+    }, [props.category, props.updateQuery, query])
 
     return (
       <div className="photo-container">

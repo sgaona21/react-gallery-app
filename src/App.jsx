@@ -8,6 +8,8 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import PhotoList from './components/PhotoList.jsx'
 import Search from './components/Search.jsx'
 import Nav from './components/Nav.jsx'
+import NotFound from './components/NotFound.jsx'
+
 import { useParams } from 'react-router-dom';
 
 import apiKey from './config'
@@ -31,7 +33,7 @@ function App() {
   return (
     <>
       <div className='container'>
-        <Search updateQuery={setQuery} />
+        <Search updateQuery={setQuery} currentQuery={query} />
         <Nav />
         <Routes>
           <Route path='/' element={<Navigate replace to='/cats' />} />
@@ -39,6 +41,8 @@ function App() {
           <Route path='/dogs' element={<PhotoList data={images} updateQuery={setQuery} category={'dogs'} />} />
           <Route path='/computers' element={<PhotoList data={images} updateQuery={setQuery} category={'computers'} />} />
           <Route path='/search/:query' element={<PhotoList data={images} updateQuery={setQuery} />} />
+          <Route path='*' element={<NotFound />} />
+          <Route path='/search/*' element={<NotFound />} />
         </Routes>
       </div>
     </>

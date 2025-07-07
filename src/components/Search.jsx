@@ -1,9 +1,13 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Search = (props) => {
   const query = useRef();
   let navigate = useNavigate();
+
+  const updateSearchBar = () => {
+    query.current.value = props.currentQuery
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,6 +16,10 @@ const Search = (props) => {
     props.updateQuery(searchQuery);
     navigate(path);
   }
+
+  useEffect(() => {
+    updateSearchBar();
+  }, [props.currentQuery])
 
     return (
       <form className="search-form" onSubmit={handleSubmit} >
