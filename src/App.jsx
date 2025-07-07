@@ -26,7 +26,6 @@ function App() {
 
   useEffect(() => {
     fetchData(apiKey, query);
-    console.log(query)
   }, [query])
 
   return (
