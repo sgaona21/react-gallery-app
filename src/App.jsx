@@ -10,8 +10,6 @@ import Search from './components/Search.jsx'
 import Nav from './components/Nav.jsx'
 import NotFound from './components/NotFound.jsx'
 
-import { useParams } from 'react-router-dom';
-
 import apiKey from './config'
 
 function App() {

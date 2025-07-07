@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import loadingImage from '../assets/loading.png'
 
 const PhotoList = (props) => {
-    const { query } = useParams()
+    const { query } = useParams();
 
     const handleSearchNav = (newQuery) => {
       if (newQuery) {
