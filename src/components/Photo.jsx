@@ -3,7 +3,7 @@ const Photo = (props) => {
       <li>
         <img
           src={props.url}
-          alt={props.tags}
+          alt='photo of search result'
         />
       </li>
     );
