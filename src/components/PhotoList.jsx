@@ -40,7 +40,7 @@ const PhotoList = (props) => {
 
     return (
       <div className="photo-container">
-        <h2>Results</h2>
+        <h2>Image Results For "{props.currentQuery}"</h2>
         <ul>
           {props.data.map(image => <Photo url={image.largeImageURL} desc={image.tags} key={image.id} />)}
         </ul>

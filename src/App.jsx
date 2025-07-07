@@ -40,10 +40,10 @@ function App() {
         <Nav />
         <Routes>
           <Route path='/' element={<Navigate replace to='/cats' />} />
-          <Route path='/cats' element={<PhotoList data={images} updateQuery={setQuery} category={'cats'} isFetching={fetching} />} />
-          <Route path='/dogs' element={<PhotoList data={images} updateQuery={setQuery} category={'dogs'} isFetching={fetching} />} />
-          <Route path='/computers' element={<PhotoList data={images} updateQuery={setQuery} category={'computers'} isFetching={fetching} />} />
-          <Route path='/search/:query' element={<PhotoList data={images} updateQuery={setQuery} isFetching={fetching} />}  />
+          <Route path='/cats' element={<PhotoList data={images} updateQuery={setQuery} category={'cats'} isFetching={fetching} currentQuery={query} />} />
+          <Route path='/dogs' element={<PhotoList data={images} updateQuery={setQuery} category={'dogs'} isFetching={fetching} currentQuery={query} />} />
+          <Route path='/computers' element={<PhotoList data={images} updateQuery={setQuery} category={'computers'} isFetching={fetching} currentQuery={query} />} />
+          <Route path='/search/:query' element={<PhotoList data={images} updateQuery={setQuery} isFetching={fetching} currentQuery={query} />}  />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
