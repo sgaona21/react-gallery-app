@@ -6,6 +6,7 @@ const Search = (props) => {
   let navigate = useNavigate();
 
   const updateSearchBar = () => {
+    // upon forward/back navigation in browser, this function updates the string inside the search bar to match images shown
     if (props.currentQuery == 'cats' || props.currentQuery == 'dogs' || props.currentQuery == 'computers') {
       query.current.value = '';
     } else {
@@ -15,6 +16,7 @@ const Search = (props) => {
   }
 
   const handleSubmit = (e) => {
+    //creates custom search via search bar and initiates new fetch request 
     e.preventDefault();
     let searchQuery = query.current.value;
     let path = `search/${searchQuery}`;

@@ -18,6 +18,7 @@ function App() {
   const [fetching, setFetching] = useState(false) // manages time between loading new images 
 
   const fetchData = (key, searchQuery) => {
+    //fetches images from Pixabay API
     setFetching(true);
     fetch(`https://pixabay.com/api/?key=${key}&q=${searchQuery}&image_type=photo`)
     .then(response => response.json())
@@ -29,6 +30,7 @@ function App() {
   }
 
   useEffect(() => {
+    //creates new fetch request upon state change
     fetchData(apiKey, query);
   }, [query])
 
