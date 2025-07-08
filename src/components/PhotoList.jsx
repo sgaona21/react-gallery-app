@@ -35,7 +35,7 @@ const PhotoList = (props) => {
           <ul>
             <li className="not-found">
               <h2>No Results Found</h2>
-              <p>You search did not return any results. Please try again.</p>
+              <p>Your search did not return any results. Please try again.</p>
             </li>
           </ul>
         </div>
